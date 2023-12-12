@@ -10,6 +10,8 @@ export default function BoardWrite() {
   const [writer, setWriter] = useState("");
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
+
+  const [isActive, setIsActive] = useState(false);
   
 
   const onClickSubmit = async () => {
@@ -25,14 +27,26 @@ export default function BoardWrite() {
 
   const onChangeWriter = (e) =>{
     setWriter(e.target.value);
+
+    if(e.target.value && title && contents){
+      setIsActive(true);
+    }
   }
   
   const onChangeTitle = (e) =>{
     setTitle(e.target.value);
+
+    if(writer && e.target.value && contents){
+      setIsActive(true);
+    }
   }
 
   const onChangeContents = (e) =>{
     setContents(e.target.value);
+
+    if(writer && title && e.target.value  ){
+      setIsActive(true);
+    }
   }
 
   return(
@@ -41,6 +55,7 @@ export default function BoardWrite() {
       onChangeWriter = {onChangeWriter}
       onChangeTitle = {onChangeTitle}
       onChangeContents = {onChangeContents}
+      isActive = {isActive}
     />
   )
 }
