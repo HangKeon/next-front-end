@@ -1,6 +1,7 @@
 import { BlueButton, RedInput } from './BoardWrite.styes';
+import { IBoardWriteUIPropos } from './BoardWrite.types';
 
-export default function BoardWriteUI(props){
+export default function BoardWriteUI(props: IBoardWriteUIPropos){
   return(
     <div>
       작성자: <RedInput  type="text" onChange={props.onChangeWriter} defaultValue={props.data?.fetchBoard.writer}/>

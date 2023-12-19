@@ -1,10 +1,11 @@
 import { useMutation } from '@apollo/client';
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import BoardWriteUI from "./BoardWrite.presenter";
 import { UPDATE_BOARD, 나의그래프큐엘세팅 } from "./BoardWrite.queries"
 import { useRouter } from 'next/router';
+import { IBoardWriteProps, IMyvariables } from './BoardWrite.types';
 
-export default function BoardWrite(props) {
+export default function BoardWrite(props:IBoardWriteProps) {
 
   const [나의함수] = useMutation(나의그래프큐엘세팅);
   const [updateBoard] = useMutation(UPDATE_BOARD);
@@ -27,12 +28,12 @@ export default function BoardWrite(props) {
     console.log(result);
 
     //게시물을 등록하고 나면 아래 상세페이지로 이동
-    router.push(`/section09/09-04-boards/${result.data.createBoard.number}`);
+    router.push(`/section10/10-02-typescript-boards/${result.data.createBoard.number}`);
   }
 
   //수정하기
   const onClickUpdate = async() => {
-    const myvariables = {
+    const myvariables: IMyvariables = {
       number: Number(router.query.number)
     };
 
@@ -53,18 +54,18 @@ export default function BoardWrite(props) {
 
     console.log(result);
 
-    router.push(`/section09/09-04-boards/${result.data.updateBoard.number}`);
+    router.push(`/section10/10-02-typescript-boards/${result.data.updateBoard.number}`);
   }
 
-  const onChangeWriter = (e) =>{
+  const onChangeWriter = (e: ChangeEvent<HTMLInputElement>) =>{
     setWriter(e.target.value);
   }
   
-  const onChangeTitle = (e) =>{
+  const onChangeTitle = (e: ChangeEvent<HTMLInputElement>) =>{
     setTitle(e.target.value);
   }
 
-  const onChangeContents = (e) =>{
+  const onChangeContents = (e: ChangeEvent<HTMLInputElement>) =>{
     setContents(e.target.value);
   }
 
