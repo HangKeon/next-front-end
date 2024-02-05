@@ -19,7 +19,7 @@ const MapFruitsPage = () => {
   return (
     <div>
     {
-      FRUITS.map((el)=><div>{el.number} {el.title}</div>)
+      FRUITS.map((el)=><div key={el._id}>{el.number} {el.title}</div>)
     }
     </div>
   )

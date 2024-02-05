@@ -29,7 +29,7 @@ const MapBoardsPage = () => {
       <div>내용 : {data?.fetchBoard.contents}</div> */}
       {
         data?.fetchBoards.map((el: any) => (
-          <div id={el.writer} onClick={onClickAlert}>
+          <div key={el._id} id={el.writer} onClick={onClickAlert}>
             <span><input type="checkbox" /></span>
             <span style={{ margin: "10px"}}>{el.number}</span>
             <span style={{ margin: "10px"}}>{el.title}</span>
